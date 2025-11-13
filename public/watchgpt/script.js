@@ -8,11 +8,15 @@
       navLogo: "WatchGPT",
       navEN: "EN",
       navDE: "DE",
+      themeToggleDark: "Dark",
+      themeToggleLight: "Light",
       // Hero
       beta: "Beta",
       heroHeadline: "WatchGPT – ChatGPT on your wrist",
       heroSubheadline: "Bring the power of ChatGPT to your Apple Watch. Join the beta waitlist now.",
       heroCTA: "Join the waitlist",
+      modelNote: "Only Gemini supported for now. ChatGPT coming soon.",
+      imageCaption: "Placeholder image. Replace with an Apple Watch Series 10 photo you have rights to use.",
       // Features
       featuresTitle: "Features",
       feature1Title: "Fast replies on your wrist",
@@ -75,11 +79,15 @@
       navLogo: "WatchGPT",
       navEN: "EN",
       navDE: "DE",
+      themeToggleDark: "Dunkel",
+      themeToggleLight: "Hell",
       // Hero
       beta: "Beta",
       heroHeadline: "WatchGPT – ChatGPT direkt an deinem Handgelenk",
       heroSubheadline: "Hol dir die Power von ChatGPT auf deine Apple Watch. Trag dich jetzt auf die Warteliste ein.",
       heroCTA: "Zur Warteliste anmelden",
+      modelNote: "Aktuell nur Gemini-Support. ChatGPT kommt bald.",
+      imageCaption: "Platzhalterbild. Ersetze es durch ein Foto der Apple Watch Series 10, für das du Nutzungsrechte hast.",
       // Features
       featuresTitle: "Funktionen",
       feature1Title: "Schnelle Antworten am Handgelenk",
@@ -142,7 +150,6 @@
   function applyLanguage(lang) {
     const dict = texts[lang] || texts.en;
 
-    // Update all data-key text nodes
     $$('[data-key]').forEach(el => {
       const key = el.getAttribute('data-key');
       if (dict[key] !== undefined) {
@@ -151,7 +158,6 @@
       }
     });
 
-    // Update placeholders
     $$('[data-placeholder-key]').forEach(el => {
       const key = el.getAttribute('data-placeholder-key');
       if (dict[key] !== undefined) {
@@ -159,7 +165,6 @@
       }
     });
 
-    // Update option elements that use data-key
     $$('option[data-key]').forEach(opt => {
       const key = opt.getAttribute('data-key');
       if (dict[key] !== undefined) {
@@ -167,10 +172,8 @@
       }
     });
 
-    // Update document language attribute
     document.documentElement.setAttribute('lang', lang === 'de' ? 'de' : 'en');
 
-    // Update meta title/description and title
     document.title = dict.metaTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', dict.metaDescription);
@@ -180,9 +183,15 @@
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', dict.metaDescription);
 
-    // Toggle active button UI
     document.getElementById('btn-en')?.classList.toggle('active', lang === 'en');
     document.getElementById('btn-de')?.classList.toggle('active', lang === 'de');
+
+    // Update theme button text
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      const theme = getTheme();
+      themeBtn.textContent = theme === 'dark' ? dict.themeToggleLight : dict.themeToggleDark;
+    }
   }
 
   function getLang() {
@@ -193,6 +202,25 @@
   function setLang(lang) {
     localStorage.setItem('lang', lang);
     applyLanguage(lang);
+  }
+
+  function getTheme() {
+    return localStorage.getItem('theme') || 'light';
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    // Update button label after theme change
+    const lang = getLang();
+    const dict = texts[lang];
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.textContent = theme === 'dark' ? dict.themeToggleLight : dict.themeToggleDark;
+  }
+
+  function toggleTheme() {
+    const current = getTheme();
+    setTheme(current === 'dark' ? 'light' : 'dark');
   }
 
   function validateEmail(email) {
@@ -252,11 +280,18 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    // Theme init
+    setTheme(getTheme());
+
+    // Language init
     const initialLang = getLang();
     applyLanguage(initialLang);
 
+    // Bindings
     document.getElementById('btn-en')?.addEventListener('click', () => setLang('en'));
     document.getElementById('btn-de')?.addEventListener('click', () => setLang('de'));
+
+    document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
 
     handleForm();
     smoothScrollToWaitlist();

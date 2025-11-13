@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,12 @@
   <header class="header">
     <div class="container nav">
       <div class="logo" data-key="navLogo">WatchGPT</div>
-      <div class="lang-toggle" role="group" aria-label="Language toggle">
-        <button id="btn-en" class="lang-btn active" data-lang="en" data-key="navEN">EN</button>
-        <button id="btn-de" class="lang-btn" data-lang="de" data-key="navDE">DE</button>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode" data-key="themeToggleDark">Dark</button>
+        <div class="lang-toggle" role="group" aria-label="Language toggle">
+          <button id="btn-en" class="lang-btn active" data-lang="en" data-key="navEN">EN</button>
+          <button id="btn-de" class="lang-btn" data-lang="de" data-key="navDE">DE</button>
+        </div>
       </div>
     </div>
   </header>
@@ -34,23 +37,13 @@
           <span class="badge" data-key="beta">Beta</span>
           <h1 class="hero-title" data-key="heroHeadline">WatchGPT – ChatGPT on your wrist</h1>
           <p class="hero-sub" data-key="heroSubheadline">Bring the power of ChatGPT to your Apple Watch. Join the beta waitlist now.</p>
+          <p class="hero-note" data-key="modelNote">Only Gemini supported for now. ChatGPT coming soon.</p>
           <button class="btn btn-primary" id="cta-join" data-key="heroCTA">Join the waitlist</button>
         </div>
-        <div class="hero-mock">
-          <div class="watch">
-            <div class="watch-band top"></div>
-            <div class="watch-body">
-              <div class="watch-screen">
-                <div class="bubble left">Hi 👋</div>
-                <div class="bubble right">How can I help?</div>
-                <div class="bubble left">Summarize my meeting notes.</div>
-                <div class="bubble right">Here’s a quick summary…</div>
-              </div>
-              <div class="crown"></div>
-            </div>
-            <div class="watch-band bottom"></div>
-          </div>
-        </div>
+        <figure class="hero-image">
+          <img src="https://dummyimage.com/900x650/f3f4f6/aaaaaa&text=Apple+Watch+Series+10+Photo" alt="Apple Watch Series 10" />
+          <figcaption class="image-caption" data-key="imageCaption">Placeholder image. Replace with an Apple Watch Series 10 photo you have rights to use.</figcaption>
+        </figure>
       </div>
     </section>
 
