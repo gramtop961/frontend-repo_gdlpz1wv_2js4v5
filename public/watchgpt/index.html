@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WatchGPT – ChatGPT on your wrist</title>
+  <meta name="description" content="Bring the power of ChatGPT to your Apple Watch. Join the beta waitlist for WatchGPT." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="WatchGPT – ChatGPT on your wrist" />
+  <meta property="og:description" content="Bring the power of ChatGPT to your Apple Watch. Join the beta waitlist for WatchGPT." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/ffffff/000000&text=WatchGPT" />
+  <meta property="og:url" content="https://example.com/watchgpt" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo" data-key="navLogo">WatchGPT</div>
+      <div class="lang-toggle" role="group" aria-label="Language toggle">
+        <button id="btn-en" class="lang-btn active" data-lang="en" data-key="navEN">EN</button>
+        <button id="btn-de" class="lang-btn" data-lang="de" data-key="navDE">DE</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="badge" data-key="beta">Beta</span>
+          <h1 class="hero-title" data-key="heroHeadline">WatchGPT – ChatGPT on your wrist</h1>
+          <p class="hero-sub" data-key="heroSubheadline">Bring the power of ChatGPT to your Apple Watch. Join the beta waitlist now.</p>
+          <button class="btn btn-primary" id="cta-join" data-key="heroCTA">Join the waitlist</button>
+        </div>
+        <div class="hero-mock">
+          <div class="watch">
+            <div class="watch-band top"></div>
+            <div class="watch-body">
+              <div class="watch-screen">
+                <div class="bubble left">Hi 👋</div>
+                <div class="bubble right">How can I help?</div>
+                <div class="bubble left">Summarize my meeting notes.</div>
+                <div class="bubble right">Here’s a quick summary…</div>
+              </div>
+              <div class="crown"></div>
+            </div>
+            <div class="watch-band bottom"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-key="featuresTitle">Features</h2>
+        <div class="features-grid">
+          <article class="card">
+            <div class="icon">⚡️</div>
+            <h3 class="card-title" data-key="feature1Title">Fast replies on your wrist</h3>
+            <p class="card-desc" data-key="feature1Desc">Get instant answers without taking out your phone.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎙️</div>
+            <h3 class="card-title" data-key="feature2Title">Dictate instead of typing</h3>
+            <p class="card-desc" data-key="feature2Desc">Speak your prompt and get a response in seconds.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🆓</div>
+            <h3 class="card-title" data-key="feature3Title">Free basic version</h3>
+            <p class="card-desc" data-key="feature3Desc">Start for free. Optional upgrades coming later.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🔒</div>
+            <h3 class="card-title" data-key="feature4Title">Privacy-focused</h3>
+            <p class="card-desc" data-key="feature4Desc">We only send what’s needed. You stay in control.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-key="howTitle">How it works</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3 class="step-title" data-key="step1Title">Install the app</h3>
+            <p class="step-desc" data-key="step1Desc">Get WatchGPT on your Apple Watch.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3 class="step-title" data-key="step2Title">Connect your OpenAI account</h3>
+            <p class="step-desc" data-key="step2Desc">Securely sign in to enable ChatGPT.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3 class="step-title" data-key="step3Title">Chat from your wrist</h3>
+            <p class="step-desc" data-key="step3Desc">Speak or tap and get instant answers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="section" id="waitlist">
+      <div class="container">
+        <h2 class="section-title" data-key="waitlistTitle">Join the waitlist</h2>
+        <p class="section-sub" data-key="waitlistDesc">We’ll email you when invites roll out.</p>
+
+        <form id="waitlist-form" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="firstName" data-key="firstNameLabel">First name</label>
+              <input type="text" id="firstName" name="firstName" data-placeholder-key="firstNamePlaceholder" placeholder="First name" />
+              <div class="error" id="error-firstName" aria-live="polite"></div>
+            </div>
+            <div class="form-field">
+              <label for="email" data-key="emailLabel">Email</label>
+              <input type="email" id="email" name="email" data-placeholder-key="emailPlaceholder" placeholder="you@example.com" />
+              <div class="error" id="error-email" aria-live="polite"></div>
+            </div>
+            <div class="form-field">
+              <label for="platform" data-key="platformLabel">Platform</label>
+              <select id="platform" name="platform">
+                <option value="watch-only" data-key="platformOptionWatchOnly">Apple Watch only</option>
+                <option value="watch-iphone" data-key="platformOptionWatchIPhone">Apple Watch + iPhone</option>
+              </select>
+            </div>
+            <div class="form-field full">
+              <label for="usage" data-key="usageLabel">How would you use WatchGPT?</label>
+              <textarea id="usage" name="usage" rows="4" data-placeholder-key="usagePlaceholder" placeholder="Optional"></textarea>
+            </div>
+            <div class="form-actions full">
+              <button type="submit" class="btn btn-primary" data-key="submitButton">Join the waitlist</button>
+            </div>
+          </div>
+        </form>
+        <div id="form-success" class="success hidden" data-key="waitlistSuccess">Thanks, you’re on the list!</div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-key="faqTitle">FAQ</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-q" data-key="faqQ1">Is it free?</summary>
+            <p class="faq-a" data-key="faqA1">WatchGPT has a free basic version. We plan optional paid features later.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q" data-key="faqQ2">Who can join the beta?</summary>
+            <p class="faq-a" data-key="faqA2">The beta is invite-only. We’ll notify you by email when a spot opens.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q" data-key="faqQ3">How do you handle data?</summary>
+            <p class="faq-a" data-key="faqA3">We send only necessary prompts to OpenAI. We don’t sell your data.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q" data-key="faqQ4">Does it work without an iPhone?</summary>
+            <p class="faq-a" data-key="faqA4">An Apple Watch is required. Some features may benefit from pairing with an iPhone.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q" data-key="faqQ5">When will it be available?</summary>
+            <p class="faq-a" data-key="faqA5">We’re working fast. Join the waitlist to get updates and early access.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <nav class="footer-nav">
+        <a href="#" data-key="footerPrivacy">Privacy</a>
+        <a href="#" data-key="footerTerms">Terms</a>
+        <a href="#" data-key="footerImprint">Imprint</a>
+      </nav>
+      <p class="footer-note" data-key="footerNote">Unofficial client. Not affiliated with Apple or OpenAI.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
